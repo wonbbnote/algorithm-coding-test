@@ -31,13 +31,10 @@ class Solution {
         
         
         // 5단계
-        String step5 = (step4.isEmpty()) ? "a" : step4;
-        // String step5 = step4;
-        // if(step5.equals("")){
-        //     for(int i = 0; i < new_id.length(); i++){
-        //         step5 += "a";
-        //     }
-        // }
+        String step5 = step4;
+        if(step5.equals("")){
+            step5 = "a";
+        }
         
         // 6단계
         String step6 = step5;
