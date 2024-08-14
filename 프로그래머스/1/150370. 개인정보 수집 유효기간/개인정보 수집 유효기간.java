@@ -46,8 +46,6 @@ class Solution {
         for(int i = 0; i < res.size(); i++){
             answer[i] = res.get(i);
         }
-        Arrays.sort(answer);
-
         
         return answer;
     }
