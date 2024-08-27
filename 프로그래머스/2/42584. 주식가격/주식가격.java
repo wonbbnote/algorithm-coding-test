@@ -4,8 +4,10 @@ class Solution {
         
         for(int i = 0; i < prices.length; i++){
             for(int j = i+1; j < prices.length; j++){
-                answer[i]++;
-                if(prices[j] < prices[i]){
+                if(prices[j] >= prices[i]){
+                     answer[i]++;
+                }else{
+                    answer[i]++;
                     break;
                 }
             }
