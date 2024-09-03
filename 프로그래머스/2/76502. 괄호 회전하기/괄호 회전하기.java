@@ -1,40 +1,36 @@
-import java.util.*;
-class Solution {
-    public int solution(String s) {
+import java.util.ArrayDeque;
+import java.util.HashMap;
+
+class Solution{
+    public static int solution(String s){
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put('}', '{');
+        map.put(']', '[');
+
+        int n = s.length();
+        s += s;
         int answer = 0;
-    
-        for(int i = 0; i < s.length(); i++){
-            String changed = s.substring(i);
-            if(i > 0){
-                changed += s.substring(0, i);
-            }
-            
-            if(isRight(changed)){
-                answer++;
-            }
-        }
-        
-        return answer;
-    }
-    
-    private boolean isRight(String s){
-        char[] a = s.toCharArray();
-        Stack<Character> stack = new Stack<>();
-        
-        for(char c : a){
-            if(c == '['){
-                stack.push(']');
-            }else if(c == '{'){
-                stack.push('}');
-            }else if(c == '('){
-                stack.push(')');
-            }else{
-                if(stack.isEmpty() || stack.pop() != c){
-                    return false;
+
+        A:for(int i = 0; i < n; i++){
+            ArrayDeque<Character> stack = new ArrayDeque<>();
+            for(int j = i; j < i+n; j++){
+                char c = s.charAt(j);
+                if(!map.containsKey(c)){
+                    stack.push(c);
+                }else{
+                    if(stack.isEmpty() || !stack.pop().equals(map.get(c))){
+                            continue A;
+                    }
                 }
             }
+
+            if(stack.isEmpty()){
+                    answer++;
+            }
+
         }
-        
-        return stack.isEmpty();
+
+        return answer;
     }
 }
