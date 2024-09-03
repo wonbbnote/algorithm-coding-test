@@ -1,7 +1,6 @@
 import java.util.*;
 class Solution {
     boolean solution(String s) {
-        boolean answer = true;
         
         char[] sArr = s.toCharArray();
         Stack<String> stack = new Stack<>();
@@ -17,12 +16,10 @@ class Solution {
         }
         
         if(!stack.isEmpty()){
-            answer = false;
-        }else{
-            answer = true;
+            return false;
         }
+        
+        return true;
 
-
-        return answer;
     }
 }
