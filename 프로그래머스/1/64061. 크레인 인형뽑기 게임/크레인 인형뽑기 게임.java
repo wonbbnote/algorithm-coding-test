@@ -1,43 +1,36 @@
-import java.util.*;
-class Solution {
-    public int solution(int[][] board, int[] moves) {
-        int answer = 0;
-        int[] dollLoca = new int[board[0].length];
-        A:for(int j = 0; j < board[0].length; j++){
-            for(int i = 0; i < board.length; i++){
-                if(board[i][j] != 0){
-                    dollLoca[j] = i;
-                    continue A;
-                }
-            }
-        }
-        
-        Stack<Integer> stack = new Stack<>();
-        
-        for(int move: moves){
-            
-            if(dollLoca[move-1] == -1){
-                continue;
-            }
-            
-            int doll = board[dollLoca[move-1]][move-1];
-            
-            if(!stack.isEmpty() && doll == stack.peek()){
-                stack.pop();
-                answer++;
-            }else{
-                stack.push(doll);
-            }
-            
-            if(dollLoca[move-1] < board.length-1){
-                dollLoca[move-1]++;
-            }else{
-                dollLoca[move-1] = -1;
-            }
-            
-            
-        }
-        
-        return answer*2;
-    }
+import java.util.Stack;
+
+class Solution{
+		public int solution(int[][] board, int[] moves){
+		
+				Stack<Integer>[] lanes = new Stack[board.length];
+				for(int i = 0; i < lanes.length; i++){
+						lanes[i] = new Stack<>();
+				}
+				
+				for(int i = board.length - 1; i >= 0; i--){
+						for(int j = 0; j < board[i].length; j++){
+								if(board[i][j] > 0){
+										lanes[j].push(board[i][j]);
+								}
+						}
+				}
+				
+				Stack<Integer> bucket = new Stack<>();
+				int answer = 0;
+				
+				for(int move: moves){
+						if(!lanes[move-1].isEmpty()){
+								int doll = lanes[move-1].pop();
+								if(!bucket.isEmpty() && bucket.peek() == doll){
+										bucket.pop();
+										answer += 2;
+								}else{
+										bucket.push(doll);
+								}
+						}
+				}
+				
+				return answer;
+		}
 }
