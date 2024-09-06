@@ -1,40 +1,38 @@
 import java.util.*;
 class Solution {
     public int[] solution(int n, String[] words) {
-        int[] answer = new int[2];
+        int[] answer = {0, 0};
 
-        Map<String, Integer> map = new HashMap<>();
+        String end = words[0].substring(words[0].length()-1);
+        Set<String> set = new HashSet<>();
+        set.add(words[0]);
         
-        int res = 0;
-        String next = words[0];
-        map.put(words[0], 1);
-        
+        int idx = 0;
         for(int i = 1; i < words.length; i++){
-            // 끝말을 잘 이었는가?
-            String beforeEnd = next.substring(next.length() - 1);
-            String currEnd = words[i].substring(0, 1);
-            if(!beforeEnd.equals(currEnd)){
-                res = i;
+            if(words[i].length() == 1){
+                idx = i;
+                break;
+            }
+            String first = words[i].substring(0, 1);
+            if(!end.equals(first)){
+                idx = i;
+                break;
+            }
+            if(set.contains(words[i])){
+                idx = i;
                 break;
             }
             
-            // 이미 언급된 단어인가? 
-            if(!map.containsKey(words[i])){
-                map.put(words[i], 1);
-            }else{
-                res = i;
-                break;
-            }
+            end = words[i].substring(words[i].length()-1);
+            set.add(words[i]);
             
-            // 다음 단어 저장하기
-            next = words[i];
         }
         
-        if(res != 0){
-            answer[0] = res % n + 1;
-            answer[1] = res / n + 1;
+        if(idx != 0){
+            answer[0] = idx % n + 1;
+            answer[1] = idx / n + 1;
         }
-        
+
         return answer;
     }
 }
