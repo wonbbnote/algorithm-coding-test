@@ -1,52 +1,54 @@
 import java.util.*;
 class Solution {
-    static boolean[][] visited;
-    static int[] dr = {-1, 0, 1, 0};
-    static int[] dc = {0, 1, 0, -1};
+    private static int[][] visited;
+    private static int[] rs = {-1, 0, 1, 0};
+    private static int[] cs = {0, -1, 0, 1};
     
-    public boolean isValid(int r, int c, int[][] maps){
-        return (r >= 0 && r < maps.length) && (c >= 0 && c < maps[0].length) && maps[r][c] == 1;
-    }
     
     public int solution(int[][] maps) {
         int answer = 0;
-        
-        int m = maps.length;
-        int n = maps[0].length;
-        visited = new boolean[m][n];
-        
-        answer = bfs(0,0,1, maps);
+        int n = maps.length;
+        int m = maps[0].length;
+        visited = new int[n][m];
+        answer = bfs(0, 0, maps);
         
         return answer;
     }
     
-    public int bfs(int m, int n, int dis, int[][] maps){
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[] {m, n, dis});
-        visited[m][n] = true;
+    private boolean isValid(int r, int c, int[][] maps){
+        return (r >= 0 && r < maps.length) && (c >= 0 && c < maps[0].length) && maps[r][c] == 1;
+    }
+    
+    private int bfs(int r, int c, int[][] maps){
+        ArrayDeque<int[]> queue = new ArrayDeque<>();
+        queue.add(new int[] {r, c});
+        visited[r][c] = 1;
+        int answer = 0;
         
         while(!queue.isEmpty()){
             int[] curr = queue.poll();
-            int curRow = curr[0];
-            int curCol = curr[1];
-            int curDis = curr[2];
             
-            if(curRow == maps.length-1 && curCol == maps[0].length-1){
-                return curDis;
+            if(curr[0] == visited.length-1 && curr[1] == visited[0].length-1){
+                return visited[curr[0]][curr[1]];
             }
             
-            for(int i = 0 ; i < 4; i++){
-                int nextRow = curRow + dr[i];
-                int nextCol = curCol + dc[i];
-                if(isValid(nextRow, nextCol, maps)){
-                    if(!visited[nextRow][nextCol]){
-                        visited[nextRow][nextCol] = true;
-                        queue.offer(new int[] {nextRow, nextCol, curDis+1});
+            for(int i = 0; i < 4; i++){
+                int next_r = curr[0] + rs[i];
+                int next_c = curr[1] + cs[i];
+                
+                if(isValid(next_r, next_c, maps)){
+                    if(visited[next_r][next_c] == 0){
+                        queue.add(new int[] {next_r, next_c});
+                        visited[next_r][next_c] = visited[curr[0]][curr[1]] + 1;
                     }
+                    
                 }
             }
+            
         }
+        
         return -1;
+        
         
     }
 }
