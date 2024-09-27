@@ -1,25 +1,30 @@
-import java.util.*;
 class Solution {
     
+    private static boolean[] visited;
+    
     public int solution(int n, int[][] computers) {
-        Map<Integer, Boolean> visited = new HashMap<>();
         int answer = 0;
         
+        visited = new boolean[n];
+    
         for(int i = 0; i < n; i++){
-            if(!visited.containsKey(i)){
-                dfs(n, i, visited, computers);
-                answer += 1;
+            if(!visited[i]){
+                dfs(i, computers);
+                answer++;
             }
         }
+        
         return answer;
     }
     
-    static void dfs(int n, int cur, Map<Integer, Boolean> visited, int[][] computers){
-        visited.put(cur, true);
-        for(int i = 0; i < n; i++){
-            if(computers[cur][i] == 1 && !visited.containsKey(i)){
-                dfs(n, i, visited, computers);
+    public void dfs(int start, int[][] computers){
+        visited[start] = true;
+        for(int i = 0; i < computers.length; i++){
+            if(computers[start][i] == 1 && !visited[i]){
+                dfs(i, computers);
             }
         }
+        
+        
     }
 }
