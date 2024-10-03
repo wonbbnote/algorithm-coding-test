@@ -6,15 +6,13 @@ class Solution {
         for(int i = 0; i < commands.length; i++){
             int start = commands[i][0];
             int end = commands[i][1];
-            int nth = commands[i][2];
+            int k = commands[i][2];
             
-            int[] sliceArr = Arrays.copyOfRange(array, start-1, end);
-            Arrays.sort(sliceArr);
-            answer[i] = sliceArr[nth-1];
+            int[] newArr = Arrays.copyOfRange(array, start-1, end);
+            Arrays.sort(newArr);
+            answer[i] = newArr[k-1];
             
         }
-        
-        
         return answer;
     }
 }
