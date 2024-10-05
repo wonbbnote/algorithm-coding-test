@@ -1,38 +1,35 @@
 import java.util.*;
 class Solution {
-    
-    private static boolean isValidMove(int nx, int ny){
-        return 0 <= nx && nx < 11 && 0 <= ny && ny < 11;
-    }
-    
-    private static final HashMap<Character, int[]> location = new HashMap<>();
-    
-    private static void initLocation(){
-        location.put('U', new int[]{0, 1});
-        location.put('D', new int[]{0, -1});
-        location.put('L', new int[]{-1, 0});
-        location.put('R', new int[]{1, 0});
+    private boolean isValid(int x, int y){
+        return (x >= 0 && x <= 10) && (y >= 0 && y <= 10);
     }
     
     public int solution(String dirs) {
         
-        initLocation();
-        int x = 5, y = 5;
+        char[] dirsArr = dirs.toCharArray();
+        
+        Map<Character, int[]> command = new HashMap<>();
+        command.put('U', new int[] {-1, 0});
+        command.put('D', new int[] {1, 0});
+        command.put('R', new int[] {0, 1});
+        command.put('L', new int[] {0, -1});
+        
+        int[] now = new int[] {5, 5};
+        
         HashSet<String> answer = new HashSet<>();
         
-        for(int i = 0; i < dirs.length(); i++){
-            int[] offset = location.get(dirs.charAt(i));
-            int nx = x + offset[0];
-            int ny = y + offset[1];
-            if(!isValidMove(nx, ny)){
-                continue;
+        for(int i = 0; i < dirsArr.length; i++){
+            int x = now[0] + command.get(dirsArr[i])[0];
+            int y = now[1] + command.get(dirsArr[i])[1];
+            
+            if(isValid(x, y)){
+
+                answer.add(now[0] + " "+ now[1]+ " " + x + " "+ y);
+                answer.add(x + " " + y + " " + now[0] + " " + now[1]);
+                
+                now[0] = x;
+                now[1] = y;
             }
-            answer.add(x + " " + y + " " + nx + " " + ny);
-            answer.add(nx + " " + ny + " " + x + " " + y);
-            
-            x = nx;
-            y = ny;
-            
         }
         
         return answer.size()/2;
