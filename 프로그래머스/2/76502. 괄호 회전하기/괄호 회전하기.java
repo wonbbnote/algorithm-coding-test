@@ -1,36 +1,35 @@
-import java.util.ArrayDeque;
-import java.util.HashMap;
-
-class Solution{
-    public static int solution(String s){
-        HashMap<Character, Character> map = new HashMap<>();
-        map.put(')', '(');
-        map.put('}', '{');
-        map.put(']', '[');
-
-        int n = s.length();
-        s += s;
+import java.util.*;
+class Solution {
+    public int solution(String s) {
         int answer = 0;
-
-        A:for(int i = 0; i < n; i++){
-            ArrayDeque<Character> stack = new ArrayDeque<>();
-            for(int j = i; j < i+n; j++){
-                char c = s.charAt(j);
-                if(!map.containsKey(c)){
-                    stack.push(c);
+        
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put('(', ')');
+        map.put('{', '}');
+        map.put('[', ']');
+        String sNew = s + s;
+        ArrayDeque<Character> stack = new ArrayDeque<>();
+        
+        for(int i = 0; i < s.length(); i++){
+            String sub = sNew.substring(i, i+s.length());
+            char[] subArr = sub.toCharArray();
+            boolean right = true;
+            for(char c: subArr){
+                if(map.containsKey(c)){
+                    stack.push(map.get(c));
                 }else{
-                    if(stack.isEmpty() || !stack.pop().equals(map.get(c))){
-                            continue A;
+                    if(stack.isEmpty() || stack.pop() != c){
+                        right = false;
+                        break;
                     }
                 }
             }
-
-            if(stack.isEmpty()){
-                    answer++;
+            if(right && stack.isEmpty()){
+                answer++;
             }
-
         }
-
+        
+        
         return answer;
     }
 }
