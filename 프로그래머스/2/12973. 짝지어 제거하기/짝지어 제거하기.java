@@ -1,12 +1,12 @@
 import java.util.*;
-class Solution{
-    public int solution(String s){
-        
+class Solution
+{
+    public int solution(String s)
+    {
         char[] sArr = s.toCharArray();
         ArrayDeque<Character> stack = new ArrayDeque<>();
-        stack.push(sArr[0]);
         
-        for(int i = 1; i < sArr.length; i++){
+        for(int i = 0; i < sArr.length;i++){
             if(!stack.isEmpty() && stack.peek() == sArr[i]){
                 stack.pop();
             }else{
@@ -14,8 +14,10 @@ class Solution{
             }
         }
         
-        int answer = stack.isEmpty() ? 1 : 0;
+        if(stack.isEmpty()){
+            return 1;
+        }
 
-        return answer;
+        return 0;
     }
 }
