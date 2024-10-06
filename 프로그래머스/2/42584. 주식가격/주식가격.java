@@ -5,18 +5,17 @@ class Solution {
         
         ArrayDeque<Integer> stack = new ArrayDeque<>();
         for(int i = 0; i < prices.length; i++){
-            while(!stack.isEmpty() && prices[stack.peek()] > prices[i]){
-                int poppedIdx = stack.pop();
-                answer[poppedIdx] = i - poppedIdx;
+            while(!stack.isEmpty() && prices[stack.peek()]  > prices[i]){
+                int popped = stack.pop();
+                answer[popped] = i - popped;
             }
             stack.push(i);
         }
         
         while(!stack.isEmpty()){
-            int poppedIdx = stack.pop();
-            answer[poppedIdx] = prices.length - 1 - poppedIdx;
+            int popped = stack.pop();
+            answer[popped] = prices.length - 1 - popped;
         }
-        
         return answer;
     }
 }
