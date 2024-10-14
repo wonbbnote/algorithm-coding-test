@@ -30,7 +30,5 @@ class Solution {
         }else{
             answer[idx] += money;
         }
-        
-        
     }
 }
