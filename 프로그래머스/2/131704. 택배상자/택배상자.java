@@ -42,9 +42,9 @@ class Solution {
             }
             
             // 기존 컨테이너에 남아있는 상자 번호가 상자 개수보다 많고, 스택이 비어있으면
-            if(firstContainer > order.length && stack.isEmpty()){
-                break;
-            }
+            // if(firstContainer > order.length && stack.isEmpty()){
+            //     break;
+            // }
             
         }
         
