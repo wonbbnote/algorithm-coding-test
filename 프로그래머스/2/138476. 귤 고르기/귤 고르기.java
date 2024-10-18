@@ -1,30 +1,32 @@
 import java.util.*;
+
 class Solution {
     public int solution(int k, int[] tangerine) {
-        int answer = 0;
-        
-        Arrays.sort(tangerine);
 
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int a = 0; a < tangerine.length; a++){
-            if(!map.containsKey(tangerine[a])){
-                map.put(tangerine[a], 1);
+        // 귤 개수 map으로 만들기
+        Map<Integer, Integer> tangerine_db = new HashMap<>();
+        for(Integer length: tangerine){
+            if(tangerine_db.containsKey(length)){
+                tangerine_db.replace(length, tangerine_db.get(length)+1);
             }else{
-                map.put(tangerine[a], map.get(tangerine[a]) + 1);
+                tangerine_db.put(length, 1);
             }
         }
-
         
-        List<Integer> keySet = new ArrayList<>(map.keySet());
-        keySet.sort((o1, o2) -> map.get(o2).compareTo(map.get(o1)));
+        // value값으로 정렬한 key 리스트 만들기
+        List<Integer> keys = new ArrayList<>(tangerine_db.keySet());
+		Collections.sort(keys, (v2, v1) -> (tangerine_db.get(v1).compareTo(tangerine_db.get(v2)))); 
         
-        for (Integer key : keySet) {
-            k -= map.get(key);
-            answer++;
-            if(k <= 0){
+        // 개수 리턴
+        int answer = 0;
+        int num = k;
+		for (Integer key : keys) {
+            if(num <= 0){
                 break;
             }
-        }
+            num -= tangerine_db.get(key);
+            answer += 1;
+		}
         
         
         return answer;
