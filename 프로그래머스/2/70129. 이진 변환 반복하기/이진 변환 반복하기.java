@@ -1,21 +1,16 @@
 class Solution {
     public int[] solution(String s) {
+        int[] answer = {};
+        int countTransform = 0;
+        int countZero = 0;
         
-        int[] answer = new int[2];
- 
-        while(s.length() > 1) {
-
-          int cntOne = 0;
-          for(int i=0; i<s.length(); i++) {
-
-            if(s.charAt(i) == '0') answer[1]++;
-            else cntOne++;
-          }
-
-          s = Integer.toBinaryString(cntOne);
-          answer[0]++;
+        while(!s.equals("1")){
+            countTransform++;
+            int zero = s.replace("1", "").length();
+            countZero += zero;
+            s = Integer.toBinaryString(s.length() - zero);
         }
-
-        return answer;
+        
+        return new int[] {countTransform, countZero};
     }
 }
