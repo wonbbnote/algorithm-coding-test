@@ -2,24 +2,14 @@ class Solution {
     public int[] solution(int brown, int yellow) {
         int[] answer = {};
         
-        int width = 1;
-        int height = 1;
-        
-        // brown = 2 * (width + height) - 4;
-        // yellow + brown = width*height;
-        
-        int area = yellow + brown;
-        
-        while(true){
-            height = (brown + 4)/2 - width;
-            if(height * width == area && width >= height){
-                answer = new int[] {width, height};
-                break;
-            }else{
-                width++;
+        int num = (brown+4) / 2;
+        for(int i = 1; i < num; i++){
+            int col = i;
+            int row = num - i;
+            if(row * col - yellow == brown){
+                return new int[] {row, col};
             }
         }
-        
         
         return answer;
     }
