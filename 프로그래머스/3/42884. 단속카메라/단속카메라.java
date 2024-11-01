@@ -7,7 +7,6 @@ class Solution {
         
         boolean[] met = new boolean[routes.length];
         
-        int idx = 0;
         for(int i = 0; i < routes.length; i++){
 
             if(met[i]){
