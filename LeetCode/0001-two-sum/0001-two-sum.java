@@ -1,26 +1,31 @@
 import java.util.*;
 class Solution {
+
     public int[] twoSum(int[] nums, int target) {
+        return backtracking(0, nums, target, new ArrayList<>());
+    }
 
-        List<Integer> first_nums = new ArrayList<>();
-        for(int num: nums){
-            first_nums.add(num);
+    private int[] backtracking(int start, int[] nums, int target, List<Integer> ans){
+
+        if(ans.size() == 2){
+            if(nums[ans.get(0)] + nums[ans.get(1)] == target){
+                return new int[] {ans.get(0), ans.get(1)};
+            }
+            return null;
         }
+        
 
-        Arrays.sort(nums);
-        int left = 0;
-        int right = nums.length - 1;
-
-        while(left <= right){
-            if(nums[left] + nums[right] < target){
-                left += 1;
-            }else if(nums[left] + nums[right] > target){
-                right -= 1;
+        for(int i = start; i < nums.length; i++){
+            ans.add(i);
+            int[] result = backtracking(i + 1, nums, target, ans);
+            if(result == null){
+                ans.remove(ans.size()-1);
             }else{
-                return new int[] {first_nums.indexOf(nums[left]), first_nums.lastIndexOf(nums[right])};
+                return result;
             }
         }
-        return new int[] {-1, -1};
-        
+
+        return null;
+
     }
 }
