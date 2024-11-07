@@ -14,8 +14,6 @@ class Solution{
         
         for(int i = s.length(); i >= 0; i--){ // 길이
             for(int j = 0; j <= s.length() - i; j++){ // start 인덱스
-                // String str = s.substring(j, j + i);
-                // System.out.println(str);
                 if(isPalindrome(s, j, j + i - 1)){
                     answer = i;
                     return;
