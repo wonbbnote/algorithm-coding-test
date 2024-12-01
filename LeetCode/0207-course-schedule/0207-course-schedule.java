@@ -37,6 +37,6 @@ class Solution {
             }
         }
         
-        return count == numCourses ? true : false;
+        return count == numCourses;
     }
 }
