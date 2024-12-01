@@ -1,43 +1,42 @@
+import java.util.*;
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-				//✅ 주어진 입력을 사용하기 편한 형태로 변경하기 => 방향 그래프로 변경
-        Map<Integer, List<Integer>> graph = new HashMap<>();
-        int[] indegree = new int[numCourses];
-        for (int[] edge : prerequisites) {
-            graph.putIfAbsent(edge[1], new ArrayList<>());
-            graph.get(edge[1]).add(edge[0]);
-						// ✅ 그 과정 중 indegree 기록
-            indegree[edge[0]]++;
-        }
 
-				//✅ 위상정렬을 수행한다.
+        // 인접리스트 맵으로 만들어보기
+        Map<Integer, List<Integer>> adj = new HashMap<>();
+        int[] indegree = new int[numCourses];
+
+        for(int i = 0; i < prerequisites.length; i++){
+            adj.putIfAbsent(prerequisites[i][1], new ArrayList<>());
+            adj.get(prerequisites[i][1]).add(prerequisites[i][0]);
+            indegree[prerequisites[i][0]]++;
+        }
+        // System.out.println(Arrays.toString(indegree));
+        // System.out.println(adj);
+
         Queue<Integer> queue = new ArrayDeque<>();
-        int count = 0;
-				// 진입차수가 0인 노드(초기 노드)들을 큐에 넣는다.
-        for (int c = 0; c < numCourses; c++) {
-            if (indegree[c] == 0) {
-                queue.add(c);
-                count++;
+        for(int i = 0; i < indegree.length; i++){
+            if(indegree[i] == 0){
+                queue.add(i);
             }
         }
-        while (!queue.isEmpty()) {
-            int cur = queue.remove();
 
-            if (graph.containsKey(cur)) {
-                for (int next : graph.get(cur)) {
-										// 해당 정점과 연결된 노드들에서 진입차수를 뺀다.
+        int count = 0;
+        while(!queue.isEmpty()){
+            int curr = queue.poll();
+            count++;
+
+            if(adj.containsKey(curr)){
+
+                for(int next: adj.get(curr)){
                     indegree[next]--;
-										// 진입차수가 0이 되었다면 방문한다.
-                    if (indegree[next] == 0) {
-                        count++;
+                    if(indegree[next] == 0){
                         queue.add(next);
                     }
                 }
             }
         }
-
-				//✅ 위상정렬 수행 후 들은 과목수와 numCourse가 같은지를 반환한다. 
-				// 사이클이 존재한다면 모든 과목을 방문하지 못하는 것이기 때문에 numCourse와 다르다.
-        return count == numCourses;
+        
+        return count == numCourses ? true : false;
     }
 }
