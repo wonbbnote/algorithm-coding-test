@@ -37,6 +37,10 @@ class Solution {
 
         }
 
+        if(res.size() != numCourses){
+            return new int[] {};
+        }
+
         return res.stream().mapToInt(Integer::intValue).toArray();
         
     }
