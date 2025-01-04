@@ -3,30 +3,32 @@ class Solution {
     public int solution(String s) {
         int answer = 0;
         
-        HashMap<Character, Character> map = new HashMap<>();
+        Map<Character, Character> map = new HashMap<>();
         map.put('(', ')');
         map.put('{', '}');
         map.put('[', ']');
-        String sNew = s + s;
-        ArrayDeque<Character> stack = new ArrayDeque<>();
         
-        for(int i = 0; i < s.length(); i++){
-            String sub = sNew.substring(i, i+s.length());
-            char[] subArr = sub.toCharArray();
+        int sLen = s.length();
+        s += s;
+        
+        for(int i = 0; i < sLen; i++){
+            ArrayDeque<Character> stack = new ArrayDeque<>();
             boolean right = true;
-            for(char c: subArr){
+            
+            for(int check = i; check < i + sLen; check++){
+                char c = s.charAt(check);
                 if(map.containsKey(c)){
                     stack.push(map.get(c));
-                }else{
-                    if(stack.isEmpty() || stack.pop() != c){
-                        right = false;
-                        break;
-                    }
+                }else if(stack.isEmpty() || stack.pop() != c){
+                    right = false;
+                    break;
                 }
             }
+            
             if(right && stack.isEmpty()){
                 answer++;
             }
+            
         }
         
         
