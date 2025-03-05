@@ -1,35 +1,38 @@
-<h2><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters">3. Longest Substring Without Repeating Characters</a></h2><h3>Medium</h3><hr><p>Given a string <code>s</code>, find the length of the <strong>longest</strong> <span data-keyword="substring-nonempty"><strong>substring</strong></span> without repeating characters.</p>
+# 3. Longest Substring Without Repeating Characters
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+## Medium
 
-<pre>
-<strong>Input:</strong> s = &quot;abcabcbb&quot;
-<strong>Output:</strong> 3
-<strong>Explanation:</strong> The answer is &quot;abc&quot;, with the length of 3.
-</pre>
+***
 
-<p><strong class="example">Example 2:</strong></p>
+Given a string `s`, find the length of the **longest** **substring** without repeating characters.
 
-<pre>
-<strong>Input:</strong> s = &quot;bbbbb&quot;
-<strong>Output:</strong> 1
-<strong>Explanation:</strong> The answer is &quot;b&quot;, with the length of 1.
-</pre>
+&#x20;
 
-<p><strong class="example">Example 3:</strong></p>
+**Example 1:**
 
-<pre>
-<strong>Input:</strong> s = &quot;pwwkew&quot;
-<strong>Output:</strong> 3
-<strong>Explanation:</strong> The answer is &quot;wke&quot;, with the length of 3.
-Notice that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.
-</pre>
+<pre><code><strong>Input: s = "abcabcbb"
+</strong><strong>Output: 3
+</strong><strong>Explanation: The answer is "abc", with the length of 3.
+</strong></code></pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+**Example 2:**
 
-<ul>
-	<li><code>0 &lt;= s.length &lt;= 5 * 10<sup>4</sup></code></li>
-	<li><code>s</code> consists of English letters, digits, symbols and spaces.</li>
-</ul>
+<pre><code><strong>Input: s = "bbbbb"
+</strong><strong>Output: 1
+</strong><strong>Explanation: The answer is "b", with the length of 1.
+</strong></code></pre>
+
+**Example 3:**
+
+<pre><code><strong>Input: s = "pwwkew"
+</strong><strong>Output: 3
+</strong><strong>Explanation: The answer is "wke", with the length of 3.
+</strong>Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+</code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `0 <= s.length <= 5 * 104`
+* `s` consists of English letters, digits, symbols and spaces.

@@ -1,39 +1,40 @@
-<h2><a href="https://leetcode.com/problems/valid-parentheses">20. Valid Parentheses</a></h2><h3>Easy</h3><hr><p>Given a string <code>s</code> containing just the characters <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;{&#39;</code>, <code>&#39;}&#39;</code>, <code>&#39;[&#39;</code> and <code>&#39;]&#39;</code>, determine if the input string is valid.</p>
+# 20. Valid Parentheses
 
-<p>An input string is valid if:</p>
+## Easy
 
-<ol>
-	<li>Open brackets must be closed by the same type of brackets.</li>
-	<li>Open brackets must be closed in the correct order.</li>
-	<li>Every close bracket has a corresponding open bracket of the same type.</li>
-</ol>
+***
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
 
-<pre>
-<strong>Input:</strong> s = &quot;()&quot;
-<strong>Output:</strong> true
-</pre>
+An input string is valid if:
 
-<p><strong class="example">Example 2:</strong></p>
+1. Open brackets must be closed by the same type of brackets.
+2. Open brackets must be closed in the correct order.
+3. Every close bracket has a corresponding open bracket of the same type.
 
-<pre>
-<strong>Input:</strong> s = &quot;()[]{}&quot;
-<strong>Output:</strong> true
-</pre>
+&#x20;
 
-<p><strong class="example">Example 3:</strong></p>
+**Example 1:**
 
-<pre>
-<strong>Input:</strong> s = &quot;(]&quot;
-<strong>Output:</strong> false
-</pre>
+<pre><code><strong>Input: s = "()"
+</strong><strong>Output: true
+</strong></code></pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+**Example 2:**
 
-<ul>
-	<li><code>1 &lt;= s.length &lt;= 10<sup>4</sup></code></li>
-	<li><code>s</code> consists of parentheses only <code>&#39;()[]{}&#39;</code>.</li>
-</ul>
+<pre><code><strong>Input: s = "()[]{}"
+</strong><strong>Output: true
+</strong></code></pre>
+
+**Example 3:**
+
+<pre><code><strong>Input: s = "(]"
+</strong><strong>Output: false
+</strong></code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `1 <= s.length <= 104`
+* `s` consists of parentheses only `'()[]{}'`.

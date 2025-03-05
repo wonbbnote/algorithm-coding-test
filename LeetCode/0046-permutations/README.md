@@ -1,21 +1,35 @@
-<h2><a href="https://leetcode.com/problems/permutations/">46. Permutations</a></h2><h3>Medium</h3><hr><p>Given an array <code>nums</code> of distinct integers, return <em>all the possible permutations</em>. You can return the answer in <strong>any order</strong>.</p>
+# 46. Permutations
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<pre><strong>Input:</strong> nums = [1,2,3]
-<strong>Output:</strong> [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-</pre><p><strong class="example">Example 2:</strong></p>
-<pre><strong>Input:</strong> nums = [0,1]
-<strong>Output:</strong> [[0,1],[1,0]]
-</pre><p><strong class="example">Example 3:</strong></p>
-<pre><strong>Input:</strong> nums = [1]
-<strong>Output:</strong> [[1]]
-</pre>
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+## Medium
 
-<ul>
-	<li><code>1 &lt;= nums.length &lt;= 6</code></li>
-	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
-	<li>All the integers of <code>nums</code> are <strong>unique</strong>.</li>
-</ul>
+***
+
+Given an array `nums` of distinct integers, return _all the possible permutations_. You can return the answer in **any order**.
+
+&#x20;
+
+**Example 1:**
+
+<pre><code><strong>Input: nums = [1,2,3]
+</strong><strong>Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+</strong></code></pre>
+
+**Example 2:**
+
+<pre><code><strong>Input: nums = [0,1]
+</strong><strong>Output: [[0,1],[1,0]]
+</strong></code></pre>
+
+**Example 3:**
+
+<pre><code><strong>Input: nums = [1]
+</strong><strong>Output: [[1]]
+</strong></code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `1 <= nums.length <= 6`
+* `-10 <= nums[i] <= 10`
+* All the integers of `nums` are **unique**.

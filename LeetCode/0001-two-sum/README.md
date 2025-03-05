@@ -1,41 +1,45 @@
-<h2><a href="https://leetcode.com/problems/two-sum">1. Two Sum</a></h2><h3>Easy</h3><hr><p>Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>
+# 1. Two Sum
 
-<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>
+## Easy
 
-<p>You can return the answer in any order.</p>
+***
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+Given an array of integers `nums` and an integer `target`, return _indices of the two numbers such that they add up to `target`_.
 
-<pre>
-<strong>Input:</strong> nums = [2,7,11,15], target = 9
-<strong>Output:</strong> [0,1]
-<strong>Explanation:</strong> Because nums[0] + nums[1] == 9, we return [0, 1].
-</pre>
+You may assume that each input would have _**exactly**_**&#x20;one solution**, and you may not use the _same_ element twice.
 
-<p><strong class="example">Example 2:</strong></p>
+You can return the answer in any order.
 
-<pre>
-<strong>Input:</strong> nums = [3,2,4], target = 6
-<strong>Output:</strong> [1,2]
-</pre>
+&#x20;
 
-<p><strong class="example">Example 3:</strong></p>
+**Example 1:**
 
-<pre>
-<strong>Input:</strong> nums = [3,3], target = 6
-<strong>Output:</strong> [0,1]
-</pre>
+<pre><code><strong>Input: nums = [2,7,11,15], target = 9
+</strong><strong>Output: [0,1]
+</strong><strong>Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+</strong></code></pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+**Example 2:**
 
-<ul>
-	<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
-	<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
-	<li><code>-10<sup>9</sup> &lt;= target &lt;= 10<sup>9</sup></code></li>
-	<li><strong>Only one valid answer exists.</strong></li>
-</ul>
+<pre><code><strong>Input: nums = [3,2,4], target = 6
+</strong><strong>Output: [1,2]
+</strong></code></pre>
 
-<p>&nbsp;</p>
-<strong>Follow-up:&nbsp;</strong>Can you come up with an algorithm that is less than <code>O(n<sup>2</sup>)</code><font face="monospace">&nbsp;</font>time complexity?
+**Example 3:**
+
+<pre><code><strong>Input: nums = [3,3], target = 6
+</strong><strong>Output: [0,1]
+</strong></code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `2 <= nums.length <= 104`
+* `-109 <= nums[i] <= 109`
+* `-109 <= target <= 109`
+* **Only one valid answer exists.**
+
+&#x20;
+
+**Follow-up:** Can you come up with an algorithm that is less than `O(n2)` time complexity?

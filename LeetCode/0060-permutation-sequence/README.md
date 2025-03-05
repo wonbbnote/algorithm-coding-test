@@ -1,33 +1,45 @@
-<h2><a href="https://leetcode.com/problems/permutation-sequence">60. Permutation Sequence</a></h2><h3>Hard</h3><hr><p>The set <code>[1, 2, 3, ...,&nbsp;n]</code> contains a total of <code>n!</code> unique permutations.</p>
+# 60. Permutation Sequence
 
-<p>By listing and labeling all of the permutations in order, we get the following sequence for <code>n = 3</code>:</p>
+## Hard
 
-<ol>
-	<li><code>&quot;123&quot;</code></li>
-	<li><code>&quot;132&quot;</code></li>
-	<li><code>&quot;213&quot;</code></li>
-	<li><code>&quot;231&quot;</code></li>
-	<li><code>&quot;312&quot;</code></li>
-	<li><code>&quot;321&quot;</code></li>
-</ol>
+***
 
-<p>Given <code>n</code> and <code>k</code>, return the <code>k<sup>th</sup></code> permutation sequence.</p>
+The set `[1, 2, 3, ..., n]` contains a total of `n!` unique permutations.
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<pre><strong>Input:</strong> n = 3, k = 3
-<strong>Output:</strong> "213"
-</pre><p><strong class="example">Example 2:</strong></p>
-<pre><strong>Input:</strong> n = 4, k = 9
-<strong>Output:</strong> "2314"
-</pre><p><strong class="example">Example 3:</strong></p>
-<pre><strong>Input:</strong> n = 3, k = 1
-<strong>Output:</strong> "123"
-</pre>
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+By listing and labeling all of the permutations in order, we get the following sequence for `n = 3`:
 
-<ul>
-	<li><code>1 &lt;= n &lt;= 9</code></li>
-	<li><code>1 &lt;= k &lt;= n!</code></li>
-</ul>
+1. `"123"`
+2. `"132"`
+3. `"213"`
+4. `"231"`
+5. `"312"`
+6. `"321"`
+
+Given `n` and `k`, return the `kth` permutation sequence.
+
+&#x20;
+
+**Example 1:**
+
+<pre><code><strong>Input: n = 3, k = 3
+</strong><strong>Output: "213"
+</strong></code></pre>
+
+**Example 2:**
+
+<pre><code><strong>Input: n = 4, k = 9
+</strong><strong>Output: "2314"
+</strong></code></pre>
+
+**Example 3:**
+
+<pre><code><strong>Input: n = 3, k = 1
+</strong><strong>Output: "123"
+</strong></code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `1 <= n <= 9`
+* `1 <= k <= n!`

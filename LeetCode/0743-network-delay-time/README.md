@@ -1,38 +1,43 @@
-<h2><a href="https://leetcode.com/problems/network-delay-time">743. Network Delay Time</a></h2><h3>Medium</h3><hr><p>You are given a network of <code>n</code> nodes, labeled from <code>1</code> to <code>n</code>. You are also given <code>times</code>, a list of travel times as directed edges <code>times[i] = (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>)</code>, where <code>u<sub>i</sub></code> is the source node, <code>v<sub>i</sub></code> is the target node, and <code>w<sub>i</sub></code> is the time it takes for a signal to travel from source to target.</p>
+# 743. Network Delay Time
 
-<p>We will send a signal from a given node <code>k</code>. Return <em>the <strong>minimum</strong> time it takes for all the</em> <code>n</code> <em>nodes to receive the signal</em>. If it is impossible for all the <code>n</code> nodes to receive the signal, return <code>-1</code>.</p>
+## Medium
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png" style="width: 217px; height: 239px;" />
-<pre>
-<strong>Input:</strong> times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
-<strong>Output:</strong> 2
-</pre>
+***
 
-<p><strong class="example">Example 2:</strong></p>
+You are given a network of `n` nodes, labeled from `1` to `n`. You are also given `times`, a list of travel times as directed edges `times[i] = (ui, vi, wi)`, where `ui` is the source node, `vi` is the target node, and `wi` is the time it takes for a signal to travel from source to target.
 
-<pre>
-<strong>Input:</strong> times = [[1,2,1]], n = 2, k = 1
-<strong>Output:</strong> 1
-</pre>
+We will send a signal from a given node `k`. Return _the **minimum** time it takes for all the_ `n` _nodes to receive the signal_. If it is impossible for all the `n` nodes to receive the signal, return `-1`.
 
-<p><strong class="example">Example 3:</strong></p>
+&#x20;
 
-<pre>
-<strong>Input:</strong> times = [[1,2,1]], n = 2, k = 2
-<strong>Output:</strong> -1
-</pre>
+**Example 1:**
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+![](https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png)
 
-<ul>
-	<li><code>1 &lt;= k &lt;= n &lt;= 100</code></li>
-	<li><code>1 &lt;= times.length &lt;= 6000</code></li>
-	<li><code>times[i].length == 3</code></li>
-	<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>
-	<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>
-	<li><code>0 &lt;= w<sub>i</sub> &lt;= 100</code></li>
-	<li>All the pairs <code>(u<sub>i</sub>, v<sub>i</sub>)</code> are <strong>unique</strong>. (i.e., no multiple edges.)</li>
-</ul>
+<pre><code><strong>Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+</strong><strong>Output: 2
+</strong></code></pre>
+
+**Example 2:**
+
+<pre><code><strong>Input: times = [[1,2,1]], n = 2, k = 1
+</strong><strong>Output: 1
+</strong></code></pre>
+
+**Example 3:**
+
+<pre><code><strong>Input: times = [[1,2,1]], n = 2, k = 2
+</strong><strong>Output: -1
+</strong></code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `1 <= k <= n <= 100`
+* `1 <= times.length <= 6000`
+* `times[i].length == 3`
+* `1 <= ui, vi <= n`
+* `ui != vi`
+* `0 <= wi <= 100`
+* All the pairs `(ui, vi)` are **unique**. (i.e., no multiple edges.)

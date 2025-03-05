@@ -1,39 +1,43 @@
-<h2><a href="https://leetcode.com/problems/min-cost-climbing-stairs">746. Min Cost Climbing Stairs</a></h2><h3>Easy</h3><hr><p>You are given an integer array <code>cost</code> where <code>cost[i]</code> is the cost of <code>i<sup>th</sup></code> step on a staircase. Once you pay the cost, you can either climb one or two steps.</p>
+# 746. Min Cost Climbing Stairs
 
-<p>You can either start from the step with index <code>0</code>, or the step with index <code>1</code>.</p>
+## Easy
 
-<p>Return <em>the minimum cost to reach the top of the floor</em>.</p>
+***
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+You are given an integer array `cost` where `cost[i]` is the cost of `ith` step on a staircase. Once you pay the cost, you can either climb one or two steps.
 
-<pre>
-<strong>Input:</strong> cost = [10,<u>15</u>,20]
-<strong>Output:</strong> 15
-<strong>Explanation:</strong> You will start at index 1.
-- Pay 15 and climb two steps to reach the top.
+You can either start from the step with index `0`, or the step with index `1`.
+
+Return _the minimum cost to reach the top of the floor_.
+
+&#x20;
+
+**Example 1:**
+
+<pre><code><strong>Input: cost = [10,15,20]
+</strong><strong>Output: 15
+</strong><strong>Explanation: You will start at index 1.
+</strong>- Pay 15 and climb two steps to reach the top.
 The total cost is 15.
-</pre>
+</code></pre>
 
-<p><strong class="example">Example 2:</strong></p>
+**Example 2:**
 
-<pre>
-<strong>Input:</strong> cost = [<u>1</u>,100,<u>1</u>,1,<u>1</u>,100,<u>1</u>,<u>1</u>,100,<u>1</u>]
-<strong>Output:</strong> 6
-<strong>Explanation:</strong> You will start at index 0.
-- Pay 1 and climb two steps to reach index 2.
+<pre><code><strong>Input: cost = [1,100,1,1,1,100,1,1,100,1]
+</strong><strong>Output: 6
+</strong><strong>Explanation: You will start at index 0.
+</strong>- Pay 1 and climb two steps to reach index 2.
 - Pay 1 and climb two steps to reach index 4.
 - Pay 1 and climb two steps to reach index 6.
 - Pay 1 and climb one step to reach index 7.
 - Pay 1 and climb two steps to reach index 9.
 - Pay 1 and climb one step to reach the top.
 The total cost is 6.
-</pre>
+</code></pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+&#x20;
 
-<ul>
-	<li><code>2 &lt;= cost.length &lt;= 1000</code></li>
-	<li><code>0 &lt;= cost[i] &lt;= 999</code></li>
-</ul>
+**Constraints:**
+
+* `2 <= cost.length <= 1000`
+* `0 <= cost[i] <= 999`

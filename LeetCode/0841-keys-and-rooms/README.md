@@ -1,39 +1,43 @@
-<h2><a href="https://leetcode.com/problems/keys-and-rooms/">841. Keys and Rooms</a></h2><h3>Medium</h3><hr><p>There are <code>n</code> rooms labeled from <code>0</code> to <code>n - 1</code>&nbsp;and all the rooms are locked except for room <code>0</code>. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.</p>
+# 841. Keys and Rooms
 
-<p>When you visit a room, you may find a set of <strong>distinct keys</strong> in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock the other rooms.</p>
+## Medium
 
-<p>Given an array <code>rooms</code> where <code>rooms[i]</code> is the set of keys that you can obtain if you visited room <code>i</code>, return <code>true</code> <em>if you can visit <strong>all</strong> the rooms, or</em> <code>false</code> <em>otherwise</em>.</p>
+***
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+There are `n` rooms labeled from `0` to `n - 1` and all the rooms are locked except for room `0`. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
 
-<pre>
-<strong>Input:</strong> rooms = [[1],[2],[3],[]]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> 
-We visit room 0 and pick up key 1.
+When you visit a room, you may find a set of **distinct keys** in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock the other rooms.
+
+Given an array `rooms` where `rooms[i]` is the set of keys that you can obtain if you visited room `i`, return `true` _if you can visit **all** the rooms, or_ `false` _otherwise_.
+
+&#x20;
+
+**Example 1:**
+
+<pre><code><strong>Input: rooms = [[1],[2],[3],[]]
+</strong><strong>Output: true
+</strong><strong>Explanation: 
+</strong>We visit room 0 and pick up key 1.
 We then visit room 1 and pick up key 2.
 We then visit room 2 and pick up key 3.
 We then visit room 3.
 Since we were able to visit every room, we return true.
-</pre>
+</code></pre>
 
-<p><strong class="example">Example 2:</strong></p>
+**Example 2:**
 
-<pre>
-<strong>Input:</strong> rooms = [[1,3],[3,0,1],[2],[0]]
-<strong>Output:</strong> false
-<strong>Explanation:</strong> We can not enter room number 2 since the only key that unlocks it is in that room.
-</pre>
+<pre><code><strong>Input: rooms = [[1,3],[3,0,1],[2],[0]]
+</strong><strong>Output: false
+</strong><strong>Explanation: We can not enter room number 2 since the only key that unlocks it is in that room.
+</strong></code></pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+&#x20;
 
-<ul>
-	<li><code>n == rooms.length</code></li>
-	<li><code>2 &lt;= n &lt;= 1000</code></li>
-	<li><code>0 &lt;= rooms[i].length &lt;= 1000</code></li>
-	<li><code>1 &lt;= sum(rooms[i].length) &lt;= 3000</code></li>
-	<li><code>0 &lt;= rooms[i][j] &lt; n</code></li>
-	<li>All the values of <code>rooms[i]</code> are <strong>unique</strong>.</li>
-</ul>
+**Constraints:**
+
+* `n == rooms.length`
+* `2 <= n <= 1000`
+* `0 <= rooms[i].length <= 1000`
+* `1 <= sum(rooms[i].length) <= 3000`
+* `0 <= rooms[i][j] < n`
+* All the values of `rooms[i]` are **unique**.

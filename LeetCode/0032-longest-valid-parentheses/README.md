@@ -1,33 +1,36 @@
-<h2><a href="https://leetcode.com/problems/longest-valid-parentheses">32. Longest Valid Parentheses</a></h2><h3>Hard</h3><hr><p>Given a string containing just the characters <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>, return <em>the length of the longest valid (well-formed) parentheses </em><span data-keyword="substring-nonempty"><em>substring</em></span>.</p>
+# 32. Longest Valid Parentheses
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+## Hard
 
-<pre>
-<strong>Input:</strong> s = &quot;(()&quot;
-<strong>Output:</strong> 2
-<strong>Explanation:</strong> The longest valid parentheses substring is &quot;()&quot;.
-</pre>
+***
 
-<p><strong class="example">Example 2:</strong></p>
+Given a string containing just the characters `'('` and `')'`, return _the length of the longest valid (well-formed) parentheses substring_.
 
-<pre>
-<strong>Input:</strong> s = &quot;)()())&quot;
-<strong>Output:</strong> 4
-<strong>Explanation:</strong> The longest valid parentheses substring is &quot;()()&quot;.
-</pre>
+&#x20;
 
-<p><strong class="example">Example 3:</strong></p>
+**Example 1:**
 
-<pre>
-<strong>Input:</strong> s = &quot;&quot;
-<strong>Output:</strong> 0
-</pre>
+<pre><code><strong>Input: s = "(()"
+</strong><strong>Output: 2
+</strong><strong>Explanation: The longest valid parentheses substring is "()".
+</strong></code></pre>
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+**Example 2:**
 
-<ul>
-	<li><code>0 &lt;= s.length &lt;= 3 * 10<sup>4</sup></code></li>
-	<li><code>s[i]</code> is <code>&#39;(&#39;</code>, or <code>&#39;)&#39;</code>.</li>
-</ul>
+<pre><code><strong>Input: s = ")()())"
+</strong><strong>Output: 4
+</strong><strong>Explanation: The longest valid parentheses substring is "()()".
+</strong></code></pre>
+
+**Example 3:**
+
+<pre><code><strong>Input: s = ""
+</strong><strong>Output: 0
+</strong></code></pre>
+
+&#x20;
+
+**Constraints:**
+
+* `0 <= s.length <= 3 * 104`
+* `s[i]` is `'('`, or `')'`.
