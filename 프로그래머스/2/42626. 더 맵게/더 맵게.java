@@ -3,47 +3,30 @@ class Solution {
     public int solution(int[] scoville, int K) {
         int answer = 0;
         
-        List<Integer> list = new ArrayList<>(scoville.length);
-        for (int num : scoville) {
-            list.add(num);
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int s: scoville){
+            pq.add(s);
         }
-        Queue<Integer> pq = new PriorityQueue<>(list);
-        // Integer lowest = pq.remove();
         
-//         while(lowest < K){
-
-//             if(pq.size() == 1){
-//                 return -1;
-//             }
-            
-//             Integer sec = pq.remove();
-//             Integer newFood = lowest + sec * 2;
-//             pq.add(newFood);
-//             answer++;
-            
-//             // System.out.println("pq: "+ pq);
-            
-//             lowest = pq.remove();
-            
-//         }
-        
-        
-        while(pq.size() > 1){
-            Integer lowest = pq.remove();
-            if(lowest >= K){
-                return answer;
+        boolean possible = false;
+        while(!pq.isEmpty()){
+            int first = pq.poll();
+            if(first >= K){
+                possible = true;
+                break;
+            }else if(!pq.isEmpty()){
+                int sec = pq.poll();
+                int newS = first + (sec * 2);
+                pq.add(newS);
+                answer++;
             }
-            Integer second = pq.remove();
-            Integer newFood = lowest + second * 2;
-            pq.add(newFood);
-            answer++;
         }
         
-        Integer remainOne = pq.remove();
-        if(remainOne >= K){
-            return answer;
+        
+        if(!possible){
+            return -1;
         }
         
-        return -1;
+        return answer;
     }
 }
