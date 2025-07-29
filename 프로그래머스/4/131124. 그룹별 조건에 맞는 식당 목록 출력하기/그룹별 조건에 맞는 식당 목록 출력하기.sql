@@ -1,13 +1,13 @@
--- 코드를 입력하세요
+# 리뷰를 가장 많이 작성한 회원의 리뷰들을 조회해 회원 이름, 리뷰 텍스트, 리뷰 작성일이 출력
+
 SELECT MEMBER_NAME, REVIEW_TEXT, DATE_FORMAT(REVIEW_DATE, "%Y-%m-%d") AS REVIEW_DATE
-FROM REST_REVIEW a JOIN MEMBER_PROFILE b ON a.MEMBER_ID = b.MEMBER_ID
-WHERE a.MEMBER_ID = (
-                        SELECT m.MEMBER_ID
-                        FROM REST_REVIEW r 
-                        JOIN MEMBER_PROFILE m ON r.MEMBER_ID = m.MEMBER_ID
-                        GROUP BY m.MEMBER_ID
-                        ORDER BY COUNT(*) DESC
-                        LIMIT 1
-                    ) 
+FROM REST_REVIEW r JOIN MEMBER_PROFILE m ON r.MEMBER_ID = m.MEMBER_ID
+WHERE r.MEMBER_ID = (
+        SELECT MEMBER_ID
+        FROM REST_REVIEW
+        GROUP BY MEMBER_ID
+        ORDER BY COUNT(*) DESC
+        LIMIT 1
+    )
 ORDER BY REVIEW_DATE, REVIEW_TEXT
-;
+
