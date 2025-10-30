@@ -1,75 +1,69 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
 
-    static int[] parent;
-
     static class Node{
-        int n1, n2, w;
-        Node(int n1, int n2, int w){
-            this.n1 = n1;
-            this.n2 = n2;
-            this.w = w;
+        int to, weight;
+
+        Node(int to, int weight){
+            this.to = to;
+            this.weight = weight;
         }
     }
 
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int V = Integer.parseInt(st.nextToken());
         int E = Integer.parseInt(st.nextToken());
 
-        parent = new int[V+1];
-        for (int i = 1; i <= V ; i++) {
-            parent[i] = i;
-        }
+        ArrayList<Node>[] adjList = new ArrayList[V+1];
 
-        PriorityQueue<Node> pq = new PriorityQueue<>((o1, o2) -> o1.w - o2.w);
+        for (int i = 1; i <= V ; i++) {
+            adjList[i] = new ArrayList<>();
+        }
 
         for (int i = 0; i < E; i++) {
             st = new StringTokenizer(br.readLine());
-            int n1 = Integer.parseInt(st.nextToken());
-            int n2 = Integer.parseInt(st.nextToken());
-            int w = Integer.parseInt(st.nextToken());
-            pq.add(new Node(n1, n2, w));
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            int c = Integer.parseInt(st.nextToken());
+            adjList[a].add(new Node(b, c));
+            adjList[b].add(new Node(a, c));
         }
 
+        PriorityQueue<Node> pq = new PriorityQueue<>((o1, o2) -> o1.weight - o2.weight);
+        pq.add(new Node(1, 0));
+
+        boolean[] visited = new boolean[V+1];
+
         int total = 0;
+
         while(!pq.isEmpty()){
             Node curr = pq.poll();
-            if(!isSame(curr.n1, curr.n2)){
-                total += curr.w;
-                union(curr.n1, curr.n2);
+
+            if(visited[curr.to]){
+                continue;
+            }
+
+            visited[curr.to] = true;
+            total += curr.weight;
+            
+            for (Node next: adjList[curr.to]){
+                if(!visited[next.to]){
+                    pq.add(new Node(next.to, next.weight));
+                }
             }
         }
 
         System.out.println(total);
 
-    }
-
-    public static int find(int x){
-        if(parent[x] != x){
-            parent[x] = find(parent[x]);
-        }
-        return parent[x];
-    }
-
-    public static void union(int x, int y){
-        x = find(x);
-        y = find(y);
-        if(x != y){
-            parent[x] = y;
-        }
-    }
-
-    public static boolean isSame(int x, int y){
-        return find(x) == find(y);
     }
 }
