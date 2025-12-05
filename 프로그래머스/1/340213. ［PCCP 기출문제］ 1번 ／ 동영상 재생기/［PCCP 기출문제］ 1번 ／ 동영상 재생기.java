@@ -10,14 +10,14 @@ class Solution {
         int minute = Integer.valueOf(pos.split(":")[0]);
         int second = Integer.valueOf(pos.split(":")[1]);
         
-        int totalSec = minute * 60 + second;            
+        int totalSec = minute * 60 + second;  
+        
+        // 오프닝 건너뛰기: 오프닝 구간의 경우 오프닝이 끝나는 위치로
+        if(totalSec >= openingStartSec && totalSec <= openingEndSec){
+            totalSec = openingEndSec;
+        }
         
         for(int i = 0; i < commands.length; i++){
-            
-            // 오프닝 건너뛰기: 오프닝 구간의 경우 오프닝이 끝나는 위치로
-            if(totalSec >= openingStartSec && totalSec <= openingEndSec){
-                totalSec = openingEndSec;
-            }
             
             // 10초 전: "prev" 입력 시 10초 미만인 경우 처음위치
             if(commands[i].equals("prev")){
