@@ -1,74 +1,73 @@
 import java.util.*;
-
 class Solution {
-    
-    public static int[] dx = {-1, 0, 1, 0};
-    public static int[] dy = {0, -1, 0, 1};
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, 1, 0, -1};
+    static int[][] board;
     
     public int solution(int[][] land) {
         int answer = 0;
         
-        int[][] visited = new int[land.length][land[0].length];
+        int n = land.length;
+        int m = land[0].length;
+        
+        boolean[][] visited = new boolean[n][m];
+        board = new int[n][m];
         Map<Integer, Integer> map = new HashMap<>();
         
-        int label = 1;
+        int tag = 10;
         for(int i = 0; i < land.length; i++){
             for(int j = 0; j < land[0].length; j++){
-                if(land[i][j] == 1 && visited[i][j] == 0){
-                    visited[i][j] = label;
-                    int size = bfs(land, visited, i, j, label);
-                    map.put(label, size);
-                    label++;
+                if(land[i][j] == 1 && !visited[i][j]){
+                    int total = bfs(i, j, n, m, tag, visited, land);
+                    map.put(tag, total);
+                    tag++;
                 }
             }
         }
         
-        // 열별로 최댓값 확인
-        for(int col = 0; col < land[0].length; col++){
+        int max = 0;
+        
+        for(int j = 0; j < board[0].length; j++){
             Set<Integer> set = new HashSet<>();
-            int resources = 0;
-            for(int row = 0; row < land.length; row++){
-                if(visited[row][col] != 0){
-                    set.add(visited[row][col]);
+            int caseTotal = 0;
+            for(int i = 0; i < board.length; i++){
+                if(board[i][j] != 0){
+                    set.add(board[i][j]);
                 }
             }
-            for(int num : set){
-                resources += map.get(num); 
+            for(int s: set){
+                caseTotal += map.get(s);
             }
-            answer = Math.max(answer, resources);
+            max = Math.max(caseTotal, max);
         }
         
-        return answer;
+        return max;
     }
     
-    public int bfs(int[][] land, int[][] visited, int x, int y, int label){
-        
+    public int bfs(int x, int y, int n, int m, int tag, boolean[][] visited, int[][] land){
+        int total = 0;
         Queue<int[]> queue = new ArrayDeque<>();
-        queue.add(new int[] {x, y});
-        int size = 1;
+        queue.add(new int[]{x, y});
+        visited[x][y] = true;
         
         while(!queue.isEmpty()){
             int[] curr = queue.poll();
+            board[curr[0]][curr[1]] = tag;
+            total++;
             
             for(int i = 0; i < 4; i++){
                 int nextX = curr[0] + dx[i];
                 int nextY = curr[1] + dy[i];
                 
-                if(isValid(nextX, nextY, land) && visited[nextX][nextY] == 0){
-                    visited[nextX][nextY] = label;
-                    queue.add(new int[] {nextX, nextY});
-                    size++;
+                if(nextX >= 0 && nextX < n && nextY >= 0 && nextY < m){
+                    if(!visited[nextX][nextY] && land[nextX][nextY] == 1){
+                        visited[nextX][nextY] = true;
+                        queue.add(new int[] {nextX, nextY});
+                    }
                 }
             }
         }
         
-        return size;
-        
-    }
-    
-    public boolean isValid(int nextX, int nextY, int[][] land){
-        return (nextX >= 0 && nextX < land.length) 
-            && (nextY >= 0 && nextY < land[0].length)
-            && land[nextX][nextY] == 1;
+        return total;
     }
 }
