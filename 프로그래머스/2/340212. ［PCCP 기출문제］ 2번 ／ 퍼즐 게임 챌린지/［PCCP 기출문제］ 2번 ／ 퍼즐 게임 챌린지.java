@@ -2,37 +2,34 @@ class Solution {
     public int solution(int[] diffs, int[] times, long limit) {
         int answer = 0;
         
-        int n = diffs.length;
-        
         int left = 1;
-        int right = 0;
-        for(int d : diffs){
-            right = Math.max(d, right);
-        }
-
+        int right = 100000;
         
         while(left <= right){
-            int mid = (left + right) / 2; // 숙련도
+            int mid = (left + right) / 2;
             
-            long total = 0;
-            int time_prev = 0;
-            for(int i = 0; i < n; i++){
+            long totalTime = 0;
+            int prevTime = 0;
+            for(int i = 0; i < diffs.length; i++){
                 int diff = diffs[i];
                 int time = times[i];
+                
                 if(diff <= mid){
-                    total += time;
+                    totalTime += time;
                 }else{
-                    long nth = diff - mid;
-                    total += nth * (time + time_prev) + time;
+                    totalTime += (diff - mid) * (time + prevTime);
+                    totalTime += time;
                 }
-                time_prev = times[i];   
+                prevTime = time;
             }
             
-            if(total <= limit){
-                answer = mid; 
-                right = mid - 1;
-            }else if(total > limit){
+            // mid가 작으면, totalTime은 커진다.
+            // mid가 크면, totalTime은 작아진다.
+            if(limit < totalTime){
                 left = mid + 1;
+            }else{
+                answer = mid;
+                right = mid - 1;
             }
         }
         
