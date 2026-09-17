@@ -1,6 +1,6 @@
 class Solution {
 
-    static ArrayList<Integer>[] adjList;
+    static ArrayList<int[]>[] adjList;
     static boolean[] visited;
 
     public int minReorder(int n, int[][] connections) {
@@ -16,40 +16,30 @@ class Solution {
         for(int i = 0; i < connections.length; i++){
             int from = connections[i][0];
             int to = connections[i][1];
-            adjList[from].add(to);
-            adjList[to].add(from);
+            adjList[from].add(new int[] {to, 1});
+            adjList[to].add(new int[] {from, 0});
         }
 
         visited = new boolean[n];
         List<String> route = new ArrayList<>();
-        dfs(0, route);
 
-        Set<String> set = new HashSet<>();
-
-        for(int i = 0; i < connections.length; i++){
-            String s = connections[i][1] + " " + connections[i][0];
-            set.add(s);
-        }
-
-        int cnt = 0;
-        for(String s: route){
-            if(!set.contains(s)){
-                cnt++;
-            }
-        }
-
-        return cnt;
+        return dfs(0);
         
     }
 
-    public void dfs(int start, List<String> route){
+    public int dfs(int start){
+        int count = 0;
         visited[start] = true;
-        for(int next : adjList[start]){
-            if(!visited[next]){
-                route.add(start + " " + next);
-                visited[next] = true;
-                dfs(next, route);
+        for(int[] next : adjList[start]){
+            int edge = next[0];
+            int cost = next[1];
+
+            if(!visited[edge]){
+                visited[edge] = true;
+                count += cost + dfs(edge);
             }
         }
+
+        return count;
     }
 }
