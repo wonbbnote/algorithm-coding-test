@@ -1,10 +1,13 @@
--- 코드를 입력하세요
-SET @hour = -1;
-SELECT (@hour := @hour + 1) AS HOUR,
+WITH RECURSIVE cte AS (
+    SELECT 0 AS hour
+    UNION ALL 
+    SELECT hour + 1 
+    FROM cte
+    WHERE hour < 23
+)
 
-(SELECT COUNT(*)
-FROM ANIMAL_OUTS
-WHERE HOUR(DATETIME) = @hour) AS COUNT
+SELECT hour, COUNT(ANIMAL_ID) AS COUNT
+FROM cte c LEFT JOIN ANIMAL_OUTS o ON c.hour = HOUR(o.DATETIME)
+GROUP BY hour
 
-FROM ANIMAL_OUTS
-WHERE @hour < 23
+
