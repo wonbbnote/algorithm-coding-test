@@ -12,7 +12,6 @@ class Solution {
         }
 
         if(nth == k && sum == n){
-            System.out.println(cases);
             ans.add(new ArrayList<>(cases));
             return;
         }
