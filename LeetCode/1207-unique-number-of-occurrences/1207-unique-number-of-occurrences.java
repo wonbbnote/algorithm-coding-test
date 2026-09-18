@@ -12,10 +12,13 @@ class Solution {
 
         Set<Integer> set = new HashSet<>();
         for(Integer key: map.keySet()){
-            set.add(map.get(key));
+            if(!set.add(map.get(key))){
+                return false;
+            }
         }
+        return true;
 
-        return map.keySet().size() == set.size();
+        // return map.keySet().size() == set.size();
         
     }
 }
