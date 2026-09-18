@@ -1,28 +1,26 @@
-import java.util.*;
-
 class Solution {
-
     public int minCostClimbingStairs(int[] cost) {
-        Hashtable<Integer, Integer> hashTable = new Hashtable<>();
-        hashTable.put(0, 0);
-        hashTable.put(1, 0);
-        return minCost(cost, cost.length, hashTable);
-    }
 
-    public int minCost(int[] cost_list, int nth, Hashtable hashTable) {
-        int cost_val;
-        if (hashTable.containsKey(nth)) {
-            return (int) hashTable.get(nth);
 
-        } else {
-            int one_minus = minCost(cost_list, nth - 1, hashTable) + cost_list[nth - 1];
-            int two_minus = minCost(cost_list, nth - 2, hashTable) + cost_list[nth - 2];
+        // nth 까지 가려면 n-1th까지 가고 1step OR n-2th까지 가고 2step
 
-            cost_val = one_minus <= two_minus ? one_minus : two_minus;
-            hashTable.put(nth, cost_val);
+        // nth까지 가는데 최소비용
+        int[] dp = new int[cost.length + 1];
 
-            return (int) hashTable.get(nth);
+        dp[0] = cost[0];
+        dp[1] = cost[1];
+
+        for(int n = 2; n <= cost.length; n++){
+            if(n == cost.length){
+                dp[n] = Math.min(dp[n-1], dp[n-2]);
+            }else{
+                dp[n] = Math.min(dp[n-1] + cost[n], dp[n-2] + cost[n]);
+            }
+            
         }
 
+        System.out.println(Arrays.toString(dp));
+
+        return dp[cost.length];
     }
 }
