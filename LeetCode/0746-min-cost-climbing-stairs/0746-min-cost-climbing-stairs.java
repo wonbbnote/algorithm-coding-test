@@ -18,9 +18,6 @@ class Solution {
             }
             
         }
-
-        System.out.println(Arrays.toString(dp));
-
         return dp[cost.length];
     }
 }
