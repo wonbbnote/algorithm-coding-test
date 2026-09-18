@@ -2,7 +2,6 @@ class Solution {
     public int maxOperations(int[] nums, int k) {
 
         Arrays.sort(nums);
-        System.out.println(Arrays.toString(nums));
 
         int left = 0; 
         int right = nums.length - 1;
