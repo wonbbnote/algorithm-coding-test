@@ -12,7 +12,6 @@ class Solution {
 
         Set<Integer> set = new HashSet<>();
         for(Integer key: map.keySet()){
-            System.out.println(key);
             set.add(map.get(key));
         }
 
